@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Subscribe to us</h2>
+<mat-dialog-content>
+  <form [formGroup]="emailForm">
+    <p>
+      Enter your email address to subscribe to our newsletter and stay updated!
+    </p>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email Address</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        type="email"
+        placeholder="Enter your email"
+      />
+      <mat-error *ngIf="hasEmailError">
+        {{ emailErrorMessage }}
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()" class="cancel-button">Cancel</button>
+  <button
+    mat-button
+    (click)="submit()"
+    cdkFocusInitial
+    color="primary"
+    class="subscribe-button"
+    [disabled]="!canSubmit"
+  >
+    Subscribe
+  </button>
+</mat-dialog-actions>
